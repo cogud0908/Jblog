@@ -6,19 +6,19 @@
 		<![CDATA[ 
 			insert 
 			into category
-			values ( null, #{name}, #{description}, now(), #{user_no})
+			values ( null, #{name}, #{description}, now(), #{user_no}, 0)
 		]]>
 	</insert>
 	<select id = "getlist" resultType = "categoryvo" parameterType="int">
 		<![CDATA[
-			select no, name, description, date_format(reg_date, '%Y-%m-%d %h:%i:%s') as reg_date ,user_no
+			select no, name, description, date_format(reg_date, '%Y-%m-%d %h:%i:%s') as reg_date ,user_no, postcount
 			from category
 			where user_no = #{user_no}
 		]]>		
 	</select>
 	<select id = "getcategorylist" resultType = "categoryvo" parameterType="int">
 		<![CDATA[
-			select name, no
+			select no, name
 			from category
 			where user_no = #{user_no}
 		]]>		
@@ -40,6 +40,29 @@
 	<select id="last_insert_id" resultType="int">
 		<![CDATA[ 
 			select last_insert_id()
+		]]>
+	</select>
+	
+	<insert id="defaultInsert" parameterType="int">
+		<![CDATA[ 
+			insert 
+			into category
+			values ( null, '미분류', '분류가 되지 않았습니다.', now(), #{user_no}, 0);
+		]]>
+	</insert>
+	<update id="updateCount" parameterType = "int">
+		<![CDATA[ 
+			update category
+			set postCount = postCount+1
+			where no = #{no};
+		]]>
+	</update>
+	
+	<select id="getCategoryFirstNo" resultType = "integer" parameterType = "int">
+		<![CDATA[ 
+			select min(no)
+			from category
+			where user_no = #{user_no}
 		]]>
 	</select>
 	

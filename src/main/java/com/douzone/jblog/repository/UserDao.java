@@ -16,8 +16,12 @@ public class UserDao {
 	private SqlSession sqlSession;
 	
 	public void join(UserVo userVo) {
-		int no = sqlSession.insert("user.join",userVo);
+		sqlSession.insert("user.join",userVo);
+		int no = sqlSession.selectOne("user.last_insert_id");
+		
 		sqlSession.insert("blog.insert",no);
+		
+		sqlSession.insert("category.defaultInsert",no);
 	}
 
 	public UserVo login(String id, String password) {

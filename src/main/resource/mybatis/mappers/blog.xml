@@ -27,7 +27,6 @@
 			from user a, blog b
 			where a.no = b.user_no
 			and title like '%${search}%'
-			order by title desc
 			limit 10 offset #{page}
 		]]>		
 	</select>
@@ -38,7 +37,6 @@
 			from user a, blog b
 			where a.no = b.user_no
 			and id like '%${search}%'
-			order by id desc
 			limit 10 offset #{page}
 		]]>		
 	</select>

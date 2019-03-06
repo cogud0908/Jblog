@@ -2,12 +2,19 @@ package com.douzone.jblog.vo;
 
 public class PostVo {
 
+	private int no;
 	private String content;
 	private String title;
 	private String reg_date;
 	private int category_no;
 	private String category;
-			
+				
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -40,7 +47,7 @@ public class PostVo {
 	}
 	@Override
 	public String toString() {
-		return "PostVo [content=" + content + ", reg_date=" + reg_date + ", category_no=" + category_no + ", category="
-				+ category + "]";
+		return "PostVo [no=" + no + ", content=" + content + ", title=" + title + ", reg_date=" + reg_date
+				+ ", category_no=" + category_no + ", category=" + category + "]";
 	}
 }

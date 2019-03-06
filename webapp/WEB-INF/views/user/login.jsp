@@ -22,6 +22,9 @@
       		<label>패스워드</label> <input type="password" name="password">
       		<input type="submit" value="로그인">
 		</form>
+		<ul class="menu">
+			<li><a href="${pageContext.servletContext.contextPath}/">홈으로 가기</a><li>
+		</ul>
 	</div>
 </body>
 </html>

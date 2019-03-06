@@ -41,23 +41,17 @@ public class AdminService {
 	}
 	
 	public List<CategoryVo> categoryGetList(String id) {
-		int no =blogDao.getUserNo(id);
+		int no = blogDao.getUserNo(id);
 		
 		return categoryDao.getList(no);
 	}
-
-	public void write(String id) {
-		
-	}
-
-	
 	
 	public List<CategoryVo> getCategorylist(String id) { 
-		  int no = blogDao.getUserNo(id);
+		int no = blogDao.getUserNo(id);
 	  
-	List<CategoryVo> list = categoryDao.getCategory(no);
+		List<CategoryVo> list = categoryDao.getCategory(no);
 	  
-	return list; 
+		return list; 
 	}
 	 
 	 
@@ -95,5 +89,28 @@ public class AdminService {
 		
 		postVo.setCategory_no(category_no);		
 		postDao.write(postVo);
+	}
+
+	public List<PostVo> postgetList(int cateNo) {
+		List<PostVo> list = postDao.getlist(cateNo);
+		return list;
+	}
+
+	public PostVo getPost(int categoryNo, int postNo) {
+		PostVo postVo = postDao.getPost(categoryNo, postNo);
+		return postVo;
+	}
+
+	public Integer getCategoryNo(String id) {
+		int user_no = blogDao.getUserNo(id);
+		
+		return categoryDao.getCategoryNo(user_no);
+	}
+
+	public Integer getPostNo(Integer cateNo) {
+		
+		Integer result = postDao.getPostNo(cateNo.intValue());
+		
+		return result;
 	}
 }

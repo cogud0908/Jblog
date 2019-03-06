@@ -53,9 +53,13 @@ var render = function(vo, mode){
 		"<td>"+(++count)+"</td>"+
 		"<td>"+vo.name+"</td>" +
 		"<td>"+vo.description+"</td>" +
-		"<td>"+/*vo.postCount+ */"</td>" +
-		"<td><a id ='ajax-delete' href='' data-no='"+vo.no+"'>" +
-		"<img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a></td>"+
+		"<td>"+vo.postCount+"</td>" +
+		"<td>";
+		if(vo.postCount == 0) {
+			htmls += "<a id ='ajax-delete' href='' data-no='"+vo.no+"'>" +
+			"<img src='${pageContext.request.contextPath}/assets/images/delete.jpg'></a>";
+		}
+		htmls += "</td>"+
 		"</tr>"; 
 				
 	if(mode == true)

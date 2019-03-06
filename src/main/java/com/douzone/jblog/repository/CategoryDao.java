@@ -16,8 +16,6 @@ public class CategoryDao {
 	
 	public List<CategoryVo> getList(int user_no) {
 		
-		
-		
 		List<CategoryVo> list = sqlSession.selectList("category.getlist", user_no);
 		return list;
 	}
@@ -35,10 +33,13 @@ public class CategoryDao {
 		sqlSession.insert("category.insert",categoryVo);
 		int no = sqlSession.selectOne("category.last_insert_id");
 		
-		
-		
 		CategoryVo vo = sqlSession.selectOne("category.insertAfterSelect",no);	
 		
 		return vo;
+	}
+
+	public Integer getCategoryNo(int user_no) {
+		Integer result = sqlSession.selectOne("category.getCategoryFirstNo",user_no);
+		return result;
 	}
 }
